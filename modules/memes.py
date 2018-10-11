@@ -1,5 +1,6 @@
 from zalgo_text import zalgo
-import random,re
+import re
+from random import randint
 @bot.on(events.NewMessage(outgoing=True, pattern=':/'))
 @bot.on(events.MessageEdited(outgoing=True, pattern=':/'))
 async def kek(e):
