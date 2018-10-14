@@ -1,3 +1,5 @@
+import requests
+import bs4 
 import wikipedia
 from google_images_download import google_images_download
 import urbandict
