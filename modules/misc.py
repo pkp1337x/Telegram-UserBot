@@ -1,4 +1,5 @@
 import hastebin
+from py_translator import Translator
 import pybase64
 import random,re
 import subprocess
@@ -128,3 +129,10 @@ async def support_channel(e):
 @bot.on(events.MessageEdited(outgoing=True,pattern='.botversion'))
 async def bot_ver(e):
 	await e.edit('`UserBot Version: Modular r1.01`')
+@bot.on(events.NewMessage(outgoing=True,pattern='.trans (.*) (.*)'))
+@bot.on(events.MessageEdited(outgoing=True,pattern='.trans (.*) (.*)'))
+async def trans(e):
+    text_to_translate = e.pattern_match.group(1)
+    lang = e.pattern_match.group(2)
+    translated_text = Translator().translate(text=text_to_translate, dest=lang).text
+    await e.respond(translated_text)
