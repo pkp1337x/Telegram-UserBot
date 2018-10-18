@@ -85,6 +85,29 @@ async def imdb(e):
     for r in rating:
       mov_rating = r.strong['title']
     await e.respond('**Title : **`'+mov_title+'`\n**Rating : **`'+mov_rating+'`\n**Country : **`'+mov_country+'`\n**Language : **`'+mov_language+'`\n**IMDB Url : **`'+mov_link+'`\n**Story Line : **`'+story_line+'`')
-
+@bot.on(events.NewMessage(outgoing=True,pattern='.lyrcs (.*)'))
+@bot.on(events.MessageEdited(outgoing=True,pattern='.lyrcs (.*)'))
+async def ly(e):
+    name = e.pattern_match.group(1)
+    splitting = name.split(' ')
+    final = '+'.join(splitting)
+    page = requests.get("https://www.malayalachalachithram.com/search.php?q="+final)
+    soup = bs4.BeautifulSoup(page.content,'lxml')
+    results = soup.findAll("table","mdetails")
+    if results[0].a:
+      page = requests.get("https://www.malayalachalachithram.com/"+results[0].a['href'])
+      soup = bs4.BeautifulSoup(page.content,'lxml')
+      table = soup.find(id="tbllyrics") 
+      if table.findNext("td").findNext("td"):
+        lyrics_mal = table.findNext("td").findNext("td")
+        lyrics_eng = table.findNext("td")
+        lyrics_final = lyrics_mal.text+'\n\n'+lyrics_eng.text  
+      else:
+        lyrics_final = table.findNext("td").text
+      table = soup.find("table","mdetails")
+      movie_name = table.findNext("td").findNext("a")     
+      await e.respond('**Song : **`'+results[0].a.text+'`\n**Movie : **`'+movie_name.text+'`\n**Lyrics : **`'+lyrics_final+'`')
+    else:
+      await e.respond('No results') 
 
 
