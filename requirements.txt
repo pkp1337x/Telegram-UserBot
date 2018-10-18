@@ -13,3 +13,4 @@ google_images_download>=2.4.2
 beautifulsoup4
 lxml
 requests
+py-translator
