@@ -6,7 +6,7 @@ It needs a linux pc or any unix to run basic commands, or you need to find the w
 # Contact 
 
 [find me on telegram](https://t.me/pkp1337x)!.
-Special thanks to [baalajimaestro](https://github.com/baalajimaestro/Telegram-UserBot)for the base source code 
+Special thanks to [baalajimaestro](https://github.com/baalajimaestro/Telegram-UserBot) for the base source code 
 
 ### Before you start:
 Get your api-id(API_KEY in my code), API_HASH from my.telegram.org.<br/><br/>
@@ -121,6 +121,6 @@ Create an empty group, add marie, or any of its clone, find group id, then copy 
 
 - `.approvepm`:                      Approves the Person in reply to PM, incase PM-Permit is enabled
 
-- `.imdb`:                           Searches imdb for the given movie(.imdb<space><movie name> )
+- `.imdb`:                           Searches imdb for the given movie
 
-- `.lyrcs`:                          Malayalam movie songs lyrics search(.lyrcs<space><song name>)
+- `.lyrcs`:                          Malayalam movie songs lyrics search
