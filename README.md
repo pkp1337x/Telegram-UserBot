@@ -123,4 +123,6 @@ Create an empty group, add marie, or any of its clone, find group id, then copy 
 
 - `.imdb`:                           Searches imdb for the given movie
 
-- `.lyrcs`:                          Malayalam movie songs lyrics search
+- `.ly`:                             Malayalam movie songs lyrics search
+
+- `.tr`:                             Translate text to the specific language mentioned
