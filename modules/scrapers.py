@@ -85,8 +85,8 @@ async def imdb(e):
     for r in rating:
       mov_rating = r.strong['title']
     await e.respond('**Title : **`'+mov_title+'`\n**Rating : **`'+mov_rating+'`\n**Country : **`'+mov_country+'`\n**Language : **`'+mov_language+'`\n**IMDB Url : **`'+mov_link+'`\n**Story Line : **`'+story_line+'`')
-@bot.on(events.NewMessage(outgoing=True,pattern='.lyrcs (.*)'))
-@bot.on(events.MessageEdited(outgoing=True,pattern='.lyrcs (.*)'))
+@bot.on(events.NewMessage(outgoing=True,pattern='.ly (.*)'))
+@bot.on(events.MessageEdited(outgoing=True,pattern='.ly (.*)'))
 async def ly(e):
     name = e.pattern_match.group(1)
     splitting = name.split(' ')
