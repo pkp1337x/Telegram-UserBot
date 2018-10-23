@@ -3,6 +3,8 @@ from py_translator import Translator
 import pybase64
 import random,re
 import subprocess
+import os,shutil
+from wand.image import Image
 @bot.on(events.NewMessage(outgoing=True,pattern='.pip (.+)'))
 @bot.on(events.MessageEdited(outgoing=True,pattern='.pip (.+)'))
 async def pipcheck(e):
@@ -136,3 +138,19 @@ async def trans(e):
     lang = e.pattern_match.group(2)
     translated_text = Translator().translate(text=text_to_translate, dest=lang).text
     await e.edit(translated_text)
+#Sticker download------->
+@bot.on(events.NewMessage(outgoing=True,pattern=r'.stckr'))
+async def stckr(e):
+    download_directory = os.getcwd()+'/DOWNLOADS'
+    if not os.path.isdir(download_directory):
+        os.makedirs(download_directory)
+    await e.edit('Processing....')
+    downloaded_file_name = await bot.download_media(await e.get_reply_message(),download_directory)
+    with Image(filename=os.path.join(download_directory,downloaded_file_name)) as img:
+        img.format = 'png'
+        converted_file = img.save(filename=os.path.join(download_directory,downloaded_file_name+'.png'))
+    await bot.send_file(await bot.get_input_entity('me'),
+                        os.path.join(download_directory,downloaded_file_name+'.png'),
+                        force_document=True)
+    await e.edit('`Sticker downloaded as png image to personal cloud`')
+    shutil.rmtree(download_directory)
