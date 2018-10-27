@@ -84,7 +84,7 @@ async def imdb(e):
     rating = soup.findAll('div',"ratingValue")
     for r in rating:
       mov_rating = r.strong['title']
-    await e.respond('**Title : **`'+mov_title+'`\n**Rating : **`'+mov_rating+'`\n**Country : **`'+mov_country+'`\n**Language : **`'+mov_language+'`\n**IMDB Url : **`'+mov_link+'`\n**Story Line : **`'+story_line+'`')
+    await e.edit('**Title : **`'+mov_title+'`\n**Rating : **`'+mov_rating+'`\n**Country : **`'+mov_country+'`\n**Language : **`'+mov_language+'`\n**IMDB Url : **`'+mov_link+'`\n**Story Line : **`'+story_line+'`')
 @bot.on(events.NewMessage(outgoing=True,pattern='.ly (.*)'))
 @bot.on(events.MessageEdited(outgoing=True,pattern='.ly (.*)'))
 async def ly(e):
@@ -106,8 +106,8 @@ async def ly(e):
         lyrics_final = table.findNext("td").text
       table = soup.find("table","mdetails")
       movie_name = table.findNext("td").findNext("a")     
-      await e.respond('**Song : **`'+results[0].a.text+'`\n**Movie : **`'+movie_name.text+'`\n**Lyrics : **`'+lyrics_final+'`')
+      await e.edit('**Song : **`'+results[0].a.text+'`\n**Movie : **`'+movie_name.text+'`\n**Lyrics : **`'+lyrics_final+'`')
     else:
-      await e.respond('No results') 
+      await e.edit('No results') 
 
 
