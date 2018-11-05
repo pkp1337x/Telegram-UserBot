@@ -5,6 +5,7 @@ import random,re
 import subprocess
 import os,shutil
 from wand.image import Image
+from pyfiglet import Figlet
 @bot.on(events.NewMessage(outgoing=True,pattern='.pip (.+)'))
 @bot.on(events.MessageEdited(outgoing=True,pattern='.pip (.+)'))
 async def pipcheck(e):
@@ -154,3 +155,10 @@ async def stckr(e):
                         force_document=True)
     await e.edit('`Sticker downloaded as png image to personal cloud`')
     shutil.rmtree(download_directory)
+#ASCII figlet fonts--->
+@bot.on(events.NewMessage(outgoing=True,pattern=r'.fnt (.*) (.*)'))
+async def fnt(e):
+    await e.delete()
+    figlet = Figlet(font=e.pattern_match.group(2),width=30)
+    out = figlet.renderText(e.pattern_match.group(1))
+    await bot.send_message(await bot.get_input_entity(e.chat_id),".```"+out+".```")
