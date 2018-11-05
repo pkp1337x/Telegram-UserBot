@@ -129,4 +129,5 @@ Create an empty group, add marie, or any of its clone, find group id, then copy 
 
 - `.stckr`:                          Reply to the required sticker with the command to save it as png image to your personal tg cloud
 
-- `.fnt`:                            Display text as ascii art using figlet fonts...To know the name of various fonts visit http://www.figlet.org/ Usage: .fnt "your text" font_name 
+- `.fnt`:                            Display text as ascii art using figlet fonts...To know the name of various fonts visit http://www.figlet.org/ 
+Usage: .fnt "your text" font_name 
