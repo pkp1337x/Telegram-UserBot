@@ -118,7 +118,7 @@ async def imdb(e):
     		mov_rating = r.strong['title']
     else:
     	mov_rating = 'Not available'
-    await e.edit('<a href='+poster+'>&nbsp;</a>\n'
+    await e.edit('<a href='+poster+'>&#8203;</a>'
     			'<b>Title : </b><code>'+mov_title+
     			'</code>\n<code>'+mov_details+
     			'</code>\n<b>Rating : </b><code>'+mov_rating+
